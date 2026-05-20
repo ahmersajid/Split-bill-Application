@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:         #f0f7f4;
+  --surface:    #ffffff;
+  --surface2:   #e8f3ee;
+  --surface3:   #d4eade;
+  --mint:       #3db87a;
+  --mint-light: #e6f7ef;
+  --mint-dark:  #2a9460;
+  --mint-glow:  rgba(61,184,122,0.18);
+  --sage-light: #c8e6d5;
+  --teal:       #2cb5a0;
+  --teal-light: #e0f5f2;
+  --rose:       #f27e7e;
+  --rose-light: #fdeaea;
+  --rose-dark:  #d95c5c;
+  --txt1: #1a2e25; --txt2: #3d5a4a; --txt3: #7a9e8a; --txti: #ffffff;
+  --bdr:  #d4eade; --bdr2: #c0ddd0;
+  --sh-sm: 0 2px 8px rgba(42,148,96,0.08);
+  --sh-md: 0 6px 24px rgba(42,148,96,0.12);
+  --sh-lg: 0 16px 48px rgba(42,148,96,0.16);
+  --r-sm:4px; --r-md:16px; --r-lg:22px; --r-xl:28px; --r-full:9999px;
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+  --ease-out:    cubic-bezier(0.22,1,0.36,1);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--txt1);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before, body::after {
+  content:''; position:fixed; border-radius:50%; pointer-events:none; z-index:0;
+}
+body::before {
+  width:520px; height:520px; top:-160px; right:-160px;
+  background: radial-gradient(circle, rgba(61,184,122,0.10) 0%, transparent 70%);
+}
+body::after {
+  width:400px; height:400px; bottom:-120px; left:-120px;
+  background: radial-gradient(circle, rgba(44,181,160,0.09) 0%, transparent 70%);
+}
+#root { position:relative; z-index:1; }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:var(--surface2); }
+::-webkit-scrollbar-thumb { background:#7bbf9e; border-radius:var(--r-full); }
+
+@keyframes fadeUp  { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn  { from{opacity:0;transform:translateX(-14px)} to{opacity:1;transform:translateX(0)} }
+@keyframes popIn   { from{opacity:0;transform:scale(0.88)} to{opacity:1;transform:scale(1)} }
+@keyframes float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+@keyframes pulse   { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+@keyframes spin    { to{transform:rotate(360deg)} }
