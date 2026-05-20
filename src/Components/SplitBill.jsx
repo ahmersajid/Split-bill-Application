@@ -54,9 +54,7 @@ export default function SplitBill({ friend, setFriends, onClose }) {
     closeTimer.current = setTimeout(onClose, 1000)
   }
 
-  const handleReset = () => {
-    setBill(""); setMyShare(""); setPaidBy("you"); setError(""); setDone(false)
-  }
+
 
   return (
     <div className="card sb-card">
@@ -182,7 +180,6 @@ export default function SplitBill({ friend, setFriends, onClose }) {
 
       {/* actions */}
       <div className="sb-actions">
-        <button className="btn-ghost" style={{flex:1}} onClick={handleReset}>↺ Reset</button>
         <button
           className={`btn-primary ${done ? "success":""}`}
           style={{flex:2, cursor: done ? "not-allowed":"pointer"}}
