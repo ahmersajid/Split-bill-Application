@@ -3,17 +3,18 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-
-  /* Exactly 4 rows visible: (4 × 72px rows) + (3 × 8px gaps) = 312px          */
-  /* 5th friend onward triggers the scrollbar                                    */
-  max-height: 312px;
+  /* 4 rows visible: (4 × 68px) + (3 × 8px gaps) = 296px on mobile */
+  max-height: 296px;
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 4px;
   scroll-behavior: smooth;
 }
+@media (min-width: 480px) {
+  .fl-list { max-height: 312px; }
+}
 
-/* Webkit scrollbar — mint/green theme */
+/* Webkit scrollbar */
 .fl-list::-webkit-scrollbar            { width: 5px; }
 .fl-list::-webkit-scrollbar-track      { background: var(--surface2); border-radius: var(--r-full); }
 .fl-list::-webkit-scrollbar-thumb      { background: #7bbf9e;         border-radius: var(--r-full); }
@@ -26,36 +27,47 @@
 .fr-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
+  gap: 8px;
+  padding: 10px 10px;
   border-radius: var(--r-lg);
   background: var(--surface2);
   border: 1.5px solid transparent;
   cursor: pointer;
-  flex-shrink: 0;   /* must not compress — rows must overflow to trigger scroll */
+  flex-shrink: 0;
   transition: all .25s var(--ease-out);
   animation: fadeIn .35s var(--ease-out) both;
   position: relative;
   overflow: hidden;
+  min-height: 68px;
+}
+@media (min-width: 400px) {
+  .fr-row { gap: 10px; padding: 10px 12px; }
+}
+@media (min-width: 480px) {
+  .fr-row { gap: 12px; padding: 12px 14px; }
 }
 
 .fr-row--hover {
   background: var(--surface3);
-  transform: translateX(4px);
+  transform: translateX(3px);
   box-shadow: var(--sh-sm);
+}
+@media (min-width: 480px) {
+  .fr-row--hover { transform: translateX(4px); }
 }
 
 .fr-row--selected {
   background: linear-gradient(135deg, var(--mint-light), var(--teal-light));
   border-color: var(--mint);
-  transform: translateX(4px);
+  transform: translateX(3px);
   box-shadow: var(--sh-md);
+}
+@media (min-width: 480px) {
+  .fr-row--selected { transform: translateX(4px); }
 }
 
 /* ── Index Badge ────────────────────────────────────────────────────────────── */
-/* Shows #1 #2 #3 … for every friend.                                           */
-/* Default friends always keep their original number because they sit at the    */
-/* top of the array and new friends are always appended after them.             */
+/* Hide on XS to save space, show from 360px */
 .fr-index {
   font-size: 10px;
   font-weight: 800;
@@ -64,15 +76,22 @@
   background: var(--surface);
   border: 1.5px solid var(--bdr);
   border-radius: var(--r-full);
-  padding: 2px 7px;
+  padding: 2px 6px;
   flex-shrink: 0;
-  min-width: 30px;
+  min-width: 26px;
   text-align: center;
   transition: all .25s var(--ease-out);
   user-select: none;
+  /* Hide on very small screens */
+  display: none;
+}
+@media (min-width: 360px) {
+  .fr-index { display: block; }
+}
+@media (min-width: 480px) {
+  .fr-index { min-width: 30px; padding: 2px 7px; }
 }
 
-/* Badge turns mint when the row is selected */
 .fr-index--selected {
   color: var(--mint-dark);
   background: var(--mint-light);
@@ -81,14 +100,17 @@
 
 /* ── Avatar ─────────────────────────────────────────────────────────────────── */
 .fr-avatar {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  border: 2.5px solid var(--bdr);
+  border: 2px solid var(--bdr);
   background: var(--surface2);
   transition: all .25s;
+}
+@media (min-width: 480px) {
+  .fr-avatar { width: 48px; height: 48px; border-width: 2.5px; }
 }
 
 .fr-avatar img  { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -99,12 +121,14 @@
 
 .fr-name {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 13px;
   color: var(--txt1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+@media (min-width: 400px) { .fr-name { font-size: 14px; } }
+@media (min-width: 480px) { .fr-name { font-size: 15px; } }
 
 .fr-img-url {
   margin: 4px 0 0;
@@ -115,7 +139,8 @@
   text-overflow: ellipsis;
 }
 
-.fr-bal          { font-size: 12px; font-weight: 700; margin-top: 2px; }
+.fr-bal          { font-size: 11px; font-weight: 700; margin-top: 2px; }
+@media (min-width: 480px) { .fr-bal { font-size: 12px; } }
 .fr-bal--neutral { color: var(--txt3); }
 .fr-bal--green   { color: var(--mint-dark); }
 .fr-bal--red     { color: var(--rose-dark); }

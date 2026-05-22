@@ -27,6 +27,13 @@
   --ease-out:    cubic-bezier(0.22,1,0.36,1);
 }
 
+/* Base font scaling for XS screens */
+@media (max-width: 359px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background: var(--bg);
